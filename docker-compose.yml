@@ -1,0 +1,13 @@
+services:
+  oncall-bot:
+    build: .
+    container_name: bron-oncall-bot
+    env_file:
+      - .env
+    volumes:
+      - ./credentials:/app/credentials:ro
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/London
